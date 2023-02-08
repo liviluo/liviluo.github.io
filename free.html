@@ -5,9 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script>
-        var red = foreachNum(35);
-        var bule = foreachNum(12);
-      
         function show() {
             let dom = document.getElementById("random");
             dom.innerHTML = generateHtml();
@@ -17,7 +14,9 @@
 
         function generateHtml() {
             let html = "";
+            let red = foreachNum(35);
             let redBall = getRandom(red, 5);
+            let bule = foreachNum(12);
             let blueBall = getRandom(bule, 2);
             redBall.forEach(element => {
                 html += "<b>" + element + "</b>";
