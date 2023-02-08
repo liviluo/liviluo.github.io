@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        var red = foreachNum(35);
+        var bule = foreachNum(12);
+      
+        function show() {
+            let dom = document.getElementById("random");
+            dom.innerHTML = generateHtml();
+            let dom2 = document.getElementById("random2");
+            dom.innerHTML = generateHtml();
+        }
+
+        function generateHtml() {
+            let html = "";
+            let redBall = getRandom(red, 5);
+            let blueBall = getRandom(bule, 2);
+            redBall.forEach(element => {
+                html += "<b>" + element + "</b>";
+            });
+            blueBall.forEach(element => {
+                html += "<b class='blue'>" + element + "</b>";
+            });
+            let dom = document.getElementById("random");
+            return html;
+        }
+
+        function foreachNum(max) {
+            let result = []
+            for (let i = 1; i <= max; i++) {
+                let num = i.toString().length < 2 ? "0" + i : "" + i;
+                result.push(num);
+            }
+            return result;
+        }
+
+        function getRandom(arr, max) {
+            result = [];
+            let range = arr.length;
+            for (let i = 0; i < max; i++) {
+                let random = Math.floor(Math.random() * range--);
+                result.push(arr[random]);
+                delete arr[random];
+                arr = arr.filter(function (s) {
+                    return s && s.trim();
+                });
+            };
+            return result.sort(function (x, y) {
+                if (x < y) {
+                    return -1;
+                } else if (x > y) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+        }
+    </script>
+    <title>bigHappy</title>
+</head>
+
+<body onload="show()">
+    <div id="random">
+    </div>
+    <hr />
+    <div id="random2">
+    </div>
+    <hr />
+</body>
+
+</html>
+
+<style>
+    b {
+        color: red;
+        font-size: 30px;
+        padding-right: 20px;
+    }
+
+    .blue {
+        color: blue;
+    }
+</style>
